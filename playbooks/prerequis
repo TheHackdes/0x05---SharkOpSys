@@ -1,0 +1,15 @@
+---
+- name: Install FZF
+  connection: local
+  hosts: all
+#  vars_prompt:
+#    - name: BITWARDEN_ADMIN_PAGE
+#      prompt: Do you want enable the Admin Page (yes/no) ?
+#      default: "{{ BITWARDEN_ADMIN_PAGE }}"
+#      private: no
+#    - name: BITWARDEN_ADMIN_PAGE_PASSWORD
+#      prompt: Enter the admin password for Bitwarden Admin Page
+#      default: "{{ BITWARDEN_ADMIN_PAGE_PASSWORD }}"
+#      confirm: true
+  roles:
+    - ../roles/prerequis
