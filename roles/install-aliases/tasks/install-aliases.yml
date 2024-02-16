@@ -1,0 +1,17 @@
+---
+# tasks file for install-aliases
+- name: Copy aliases
+  ansible.builtin.copy:
+    src: ../files/aliases
+    dest: /etc/aliases
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+  become: true
+
+- name: Add source aliases
+  lineinfile:
+    path: '{{ ansible_env.HOME }}/.zshrc'
+    state: present
+    line: 'source /etc/aliases'

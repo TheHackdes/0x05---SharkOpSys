@@ -1,0 +1,27 @@
+alias v="nvim"
+alias ls="exa"
+alias ll="exa -la --icons=auto"
+
+alias cheat='f(){ curl -s "cheat.sh/$1"; unset -f f; }; f'
+alias c='code .'
+alias ipa='ip -br a | grep -vF DOWN | cut -d/ -f1 | fzf'
+
+alias t='f(){ exa --icons=auto -Tll "$@"; unset -f f; }; f'
+alias t2='f(){ exa --icons=auto  -Tll -L 2 "$@"; unset -f f; }; f'
+alias t3='f(){ exa --icons=auto  -Tll -L 3 "$@"; unset -f f; }; f'
+alias l='f(){ exa --icons=auto -ll --group-directories-first "$@"; unset -f f; }; f'
+alias la='f(){ exa --icons=auto -lla --group-directories-first "$@"; unset -f f; }; f'
+alias rm='trash-put'
+alias record-screen='f(){ ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -i :0.0 -c:v libx264 -crf 0 -preset ultrafast "$1".mkv;  unset -f f; }; f'
+alias ssh='ssh -o UserKnowHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias clean-swap='sudo swapoff -a && sudo swapon -a'
+alias cpy='xclip -selection c'
+alias get-ip='curl -sS ipinfo.io'
+alias get-meteo='curl https://wttr.in'
+alias get-pid-click='xprop _NET_WM_PID | cut -d" " -f3'
+alias get-pid-ps='ps fauxw | fzf | awk "{ print \$2}"'
+
+# DOCKER
+alias dockit='docker run —rm –ti –v /opt/dockit:/opt'
+alias dockex='docker exec -it $(docker ps | grep -vF "CONTAINER ID" | fzf | cut -d" " -f1)'
+alias dockit='docker run --rm -it -v "$PWD":/host --net=host'

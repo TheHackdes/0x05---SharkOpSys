@@ -1,0 +1,8 @@
+---
+- name: Setup Install Configuration
+  hosts: localhost
+  connection: local
+  roles:
+    - role: roles/install-aliases
+      users:
+        - username: '{{ ansible_user_id }}'

@@ -1,4 +1,3 @@
 #!/bin/bash
 
-ansible-playbook ./playbooks/prerequis -i hosts
-ansible-playbook ./playbooks/install-fzf -i hosts
+ansible-playbook -i hosts --ask-become main.yml
