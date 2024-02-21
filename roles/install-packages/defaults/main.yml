@@ -1,0 +1,8 @@
+---
+default_arch_packages:
+  - zsh
+  - jq
+  - htop
+  - okular
+  - tmux
+  - gron
