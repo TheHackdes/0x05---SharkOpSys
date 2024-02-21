@@ -25,3 +25,26 @@ alias get-pid-ps='ps fauxw | fzf | awk "{ print \$2}"'
 alias dockit='docker run —rm –ti –v /opt/dockit:/opt'
 alias dockex='docker exec -it $(docker ps | grep -vF "CONTAINER ID" | fzf | cut -d" " -f1)'
 alias dockit='docker run --rm -it -v "$PWD":/host --net=host'
+
+# FUNCTION
+
+## LW : LittleWeb Serveur to download fiel with wget
+lw (){
+	figlet LittleWeb | lolcat -F 0.3
+	echo ""
+	IFS=$'\n'
+	if [ -z $1 ]
+	then
+		mypath='.'
+	else
+		mypath=$1
+	fi
+	myip=`ip -br a  | grep -i up | fzf -1 | sed -e 's/ * /*/g' | cut -d'*' -f3 | sed -e 's/\/.*//g'`
+	for i in `find $mypath  -mindepth 1 -maxdepth 1 | sed -e 's/^.\///g'`
+	do
+		var=`printf %s $i | jq -sRr @uri`
+		echo "wget http://$myip:8000/$var"
+	done
+	echo 
+	python3 -m http.server &>/dev/null
+}
